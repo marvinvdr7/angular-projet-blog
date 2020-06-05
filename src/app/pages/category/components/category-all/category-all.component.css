@@ -1,0 +1,6 @@
+
+.flex-container > * { padding: 10px!important; }
+
+mat-card-actions button {
+    width: 100%;
+}

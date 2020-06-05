@@ -1,0 +1,42 @@
+<mat-sidenav-container class="all-wrap {{ changeSpaceTopNav() }}">
+    <mat-sidenav mode="{{ changeModeSideNav() }}" [(opened)]="opened" class="{{ changeSpaceTopNav() }}">
+    <mat-toolbar color="primary">
+       <div class="fw300">Menu</div>
+    </mat-toolbar>
+
+  
+    <mat-nav-list>
+      <span *ngIf="authService.isUserLoggedIn() && (authService.isUserAdmin() || authService.isUserSuperAdmin())">
+      <a mat-list-item routerLink="/post-create" class="write-article">
+            <mat-icon>create</mat-icon> 
+            Nouvel article
+      </a>
+      
+      <div class="title-sidenav menu-role-color" mat-list-item>Administration</div>
+      <a mat-list-item routerLink="/post-list">Gestion articles</a>
+      <a mat-list-item routerLink="/category-list">Gestion catégories</a>
+      <a mat-list-item routerLink="/user-list" *ngIf="authService.isUserSuperAdmin()">Gestion membres</a>
+      <a mat-list-item routerLink="/role-list">Gestion roles</a>
+      </span>
+
+      <div class="title-sidenav" mat-list-item>Pages</div>
+      <a mat-list-item routerLink="/post-all">Accueil</a>
+      <a mat-list-item routerLink="/category-all">Catégories</a>
+      <a mat-list-item>Contact</a>
+      <a mat-list-item>A propos</a>
+    </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="page-wrap">
+       <mat-toolbar color="primary">
+          <mat-toolbar-row>
+             <span class="title-content-sidenav fw300">{{ navTitle }}</span>
+          </mat-toolbar-row>
+       </mat-toolbar>
+       <!-- ROUTER OUTLET -->
+       <main class="content p10">
+          <router-outlet></router-outlet>
+       </main>
+       <!-- FOOTER -->
+       <app-footer></app-footer>
+    </mat-sidenav-content>
+ </mat-sidenav-container> 

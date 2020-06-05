@@ -1,0 +1,17 @@
+.container {
+    padding: 20px;
+}
+
+.main-div mat-card{ padding: 0; }
+
+.invalid {
+    font-style: italic;
+    font-size: 12px; 
+    color:red
+}
+
+.container {
+    padding: 20px;
+}
+
+.flex-container > * { padding: 10px!important; }

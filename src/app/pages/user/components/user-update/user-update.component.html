@@ -1,0 +1,100 @@
+<div class="main-div flex-container" fxLayout="row wrap" *ngIf="user != null">
+   <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+      <mat-card>
+         <mat-toolbar color="primary">Informations</mat-toolbar>
+         <div class="container">
+         <form fxLayoutAlign="stretch" fxLayout="column" class="form" [formGroup]="userUpdateInfoForm" (ngSubmit)="onSubmitUpdateUserInfo()">
+        
+            <mat-form-field>
+               <input matInput placeholder="Pseudo" [(ngModel)]="user.username" formControlName="username">
+            </mat-form-field>
+            <div *ngIf="userUpdateInfoForm.controls.username.invalid" class="invalid">
+               <p *ngIf="userUpdateInfoForm.controls.username.errors.required">Le pseudo est obligatoire</p>
+               <p *ngIf="userUpdateInfoForm.controls.username.errors.minlength">Le pseudo doit contenir minimum 4 caractères</p>
+               <p *ngIf="userUpdateInfoForm.controls.username.errors.maxlength">Le pseudo doit contenir maximum 30 caractères</p>
+               <p *ngIf="userUpdateInfoForm.controls.username.errors.pattern">Le pseudo ne peut contenir que des lettres</p>
+            </div>
+            <p *ngIf="errorUsernameExist == true" class="invalid">Ce n'est plus disponible</p>
+
+            <mat-form-field>
+               <input matInput placeholder="Nom" [(ngModel)]="user.lastname" formControlName="lastname" name="lastname">
+            </mat-form-field>
+            <div *ngIf="userUpdateInfoForm.controls.lastname.invalid" class="invalid">
+               <p *ngIf="userUpdateInfoForm.controls.lastname.errors.required">Le nom est obligatoire</p>
+               <p *ngIf="userUpdateInfoForm.controls.lastname.errors.minlength">Le nom doit contenir minimum 4 caractères</p>
+               <p *ngIf="userUpdateInfoForm.controls.lastname.errors.maxlength">Le nom doit contenir maximum 30 caractères</p>
+               <p *ngIf="userUpdateInfoForm.controls.lastname.errors.pattern">Le nom ne peut contenir que des lettres</p>
+            </div>
+
+            <mat-form-field>
+               <input matInput placeholder="Prénom" [(ngModel)]="user.firstname" formControlName="firstname" name="firstname">
+            </mat-form-field>
+            <div *ngIf="userUpdateInfoForm.controls.firstname.invalid" class="invalid">
+               <p *ngIf="userUpdateInfoForm.controls.firstname.errors.required">Le prénom est obligatoire</p>
+               <p *ngIf="userUpdateInfoForm.controls.firstname.errors.minlength">Le prénom doit contenir minimum 4 caractères</p>
+               <p *ngIf="userUpdateInfoForm.controls.firstname.errors.maxlength">Le prénom doit contenir maximum 30 caractères</p>
+               <p *ngIf="userUpdateInfoForm.controls.firstname.errors.pattern">Le prénom ne peut contenir que des lettres</p>
+            </div>
+   
+            <mat-form-field>
+               <input matInput placeholder="Email" [(ngModel)]="user.email" formControlName="email" name="email" >
+            </mat-form-field>
+            <div *ngIf="userUpdateInfoForm.controls.email.invalid" class="invalid">
+               <p *ngIf="userUpdateInfoForm.controls.email.errors.required">L'email est obligatoire</p>
+               <p *ngIf="userUpdateInfoForm.controls.email.errors.email">L'email n'est pas valide</p>
+            </div>
+            <p *ngIf="errorEmailExist == true" class="invalid">Cette adresse email est déjà prise</p>
+   
+            <button mat-raised-button type="submit" class="mt5" [disabled]="!userUpdateInfoForm.valid">Modifier les infos</button>
+         </form>
+      </div>
+      </mat-card>
+   </div>
+   <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+      <mat-card >
+            <mat-toolbar color="primary">Roles</mat-toolbar>
+            <div class="container">
+            <h3>Role(s) actuelle : </h3>
+
+            <mat-list>
+               <mat-list-item *ngFor="let currentRole of currentRoles"> 
+                  {{currentRole.name}} &nbsp; 
+                  <span class="btn-actions">
+                  <button mat-mini-fab color="primary" (click)="removeRoleToUser(currentRole)" [disabled]="currentRole.id === 1">
+                     <mat-icon>remove</mat-icon>
+                  </button>
+                  </span>
+               </mat-list-item>
+            </mat-list>
+
+            <h3>Ajouter un role : </h3>
+
+            <table>
+               <tr>
+                  <th>Role</th>
+                  <th>Action</th>
+               </tr>
+               <tr *ngFor="let role of roles">
+                  <td >
+                     <span class="ml10">{{ role.name }} :</span>
+                     <br>
+                     <span *ngFor="let permission of role.permissions"><span class="ml15">{{ permission.name }}</span> <br></span>
+                  </td>
+                  <td align="center">
+                     <span class="btn-actions">
+                        <button mat-mini-fab color="primary" (click)="addRoleToUser(role)" *ngIf="!compareName(role, currentRoles)">
+                           <mat-icon>add</mat-icon>
+                        </button>
+
+                        <button mat-mini-fab color="primary" *ngIf="compareName(role, currentRoles)" disabled>
+                           <mat-icon>add</mat-icon>
+                        </button>
+                     </span>
+                  </td>
+               </tr>
+            </table>
+
+         </div>
+      </mat-card>
+   </div>
+ </div>

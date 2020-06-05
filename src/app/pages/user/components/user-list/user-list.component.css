@@ -1,0 +1,35 @@
+table { width: 100%; }
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+
+
+.p10 { padding: 10px!important; }
+
+.btn-actions button:not(:last-child) {
+    margin-right: 5px;
+}
+
+
+
+.btn-actions button {
+    border-radius: 4px; 
+    width: 30px; 
+    height: 30px; 
+    line-height: 0px!important;
+}
+
+.btn-actions mat-icon {
+    font-size: 15px!important;
+    height: 15px; 
+    width: 15px;
+    position: relative;
+    bottom:6px
+}
+
+.mat-mini-fab:not([class*="mat-elevation-z"]) {
+    box-shadow:none;
+}

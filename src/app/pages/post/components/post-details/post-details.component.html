@@ -1,0 +1,24 @@
+<div class="main-div flex-container" fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="margin20">
+    <mat-card *ngIf="post != null">
+        <div>
+            <h2>{{ post.title }}</h2>
+        </div>
+        <div class="img-cover">
+            <img src="../../../../../assets/{{ post.image }}" width="100%">
+        </div>
+        <div class="author">
+            <span>Rédigé par {{ post.author | titlecase }}, le {{ post.date }}</span>
+            <span>Catégorie : {{ post.category_id }}</span>
+        </div>
+    
+        <div class="content">
+            {{ post.content }}
+        </div>
+
+        <div class="comment">
+            <h3>Commentaires :</h3>
+        </div>
+    </mat-card>
+    </div>
+</div>

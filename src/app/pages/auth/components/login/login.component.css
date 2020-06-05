@@ -1,0 +1,13 @@
+.login-form { padding: 20px; }
+
+.mt5 { margin-top: 5px; }
+
+.main-div { padding: 20px; }
+
+.main-div mat-card{ padding: 0; }
+
+.errorLog {
+    text-align: center;
+    color: red;
+    margin-top: 20px;
+}

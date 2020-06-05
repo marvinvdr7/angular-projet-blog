@@ -1,0 +1,28 @@
+div:first-child {
+    padding: 5px;
+}
+
+.img-cover {
+    width: 100%;
+    text-align: center;
+}
+
+.margin20 {
+ padding: 30px 100px!important;
+}
+
+.author {
+    padding:15px 0;
+    border-bottom:1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    padding:15px 0;
+    border-bottom:1px solid black;
+}
+
+.comment {
+    padding:15px 0;
+}

@@ -1,0 +1,16 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="category != null">
+    <mat-card fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+       <mat-toolbar color="primary">Modifier</mat-toolbar>
+          <form fxLayoutAlign="stretch" fxLayout="column" class="category-form" [formGroup]="categoryUpdateForm" (ngSubmit)="onSubmitUpdateCategory()">
+         
+             <mat-form-field>
+                <input matInput placeholder="Name" [(ngModel)]="category.name" formControlName="name" name="name">
+             </mat-form-field>
+             <div *ngIf="categoryUpdateForm.controls.name.invalid" class="invalid">
+                <p *ngIf="categoryUpdateForm.controls.name.errors.required">Le nom est obligatoire</p>
+             </div>
+    
+             <button mat-raised-button type="submit" class="mt5" [disabled]="!categoryUpdateForm.valid">Modifier la catégorie</button>
+          </form>
+       </mat-card>
+    </div>

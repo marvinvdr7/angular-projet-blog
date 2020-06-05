@@ -1,0 +1,74 @@
+.mat-sidenav {
+    width: 220px; 
+    position: fixed!important;
+}
+
+.fw300 { font-weight: 300; }
+
+mat-nav-list a  {
+    height: 38px;
+    color: rgba(0,0,0,.8);
+    font-size: 14px;
+}
+
+
+mat-icon {
+    font-size: 14px;
+    height: 14px;
+}
+
+
+
+.menu-role-color { color: #f44336; }
+
+title-content-sidenav {
+    font-size: 20px;
+    margin-left: 10px;
+}
+.write-article {
+    font-weight: 800!important;
+}
+
+.title-sidenav {
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title-sidenav:first-child {
+    margin-top: 15px!important;
+}
+
+.p10 { padding: 10px; }
+
+/* Pour ajuster l'espace de la navbar fixe, en fonction de la taille de l'écran */
+.h64{  height: 64px!important; }
+
+.h54{ height: 54px!important; }
+
+.top64{ top: 64px!important; }
+
+.top54{ top: 54px!important; }
+
+/* Sticky footer */
+.all-wrap {  min-height: 100vh; }
+
+.page-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content { flex: 1; }
+   
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main:not(router-outlet) {
+    flex: 1; 
+    display: block;
+}

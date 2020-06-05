@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="footer">  
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <div layout-align="center center" class="ml20">
+      <div>Projetblog.com</div>
+    </div>
+    <div *ngIf="!getDeviceSize()">
+      <button mat-button routerLink="/post-all">Accueil</button>
+      <button mat-button>Contact</button>
+      <button mat-button>A propos</button>
+    </div>
+    <div layout-align="center center" class="mr20">
+      <div>
+        copyright &copy;2020
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

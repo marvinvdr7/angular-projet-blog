@@ -1,0 +1,54 @@
+<mat-toolbar color="primary" class="nav-top-fixed" fxLayoutAlign="space-between center">
+  <div>
+     <button mat-icon-button (click)="toggleClick()">
+        <mat-icon>menu</mat-icon>
+     </button>
+     <button mat-button>Projet Blog</button>
+  </div>
+  <div *ngIf="!getDeviceSize()">
+     <button mat-button routerLink="/register" *ngIf="!authService.isUserLoggedIn()">Inscription</button>
+     <button mat-button routerLink="/login" *ngIf="!authService.isUserLoggedIn()">Connexion</button>
+     <button mat-button [matMenuTriggerFor]="menu" *ngIf="authService.isUserLoggedIn()">{{ authService.getUsername() | titlecase }}</button>
+     <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="goToUserDetails()">
+           <mat-icon>account_box</mat-icon>
+           Profile
+        </button>
+        <button mat-menu-item routerLink="/user-settings">
+           <mat-icon>settings</mat-icon>
+           Paramètres
+        </button>
+        <button mat-menu-item routerLink="/logout">
+           <mat-icon>exit_to_app</mat-icon>
+           Déconnexion
+        </button>
+     </mat-menu>
+  </div>
+  <div *ngIf="getDeviceSize()">
+     <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+     </button>
+     <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="!authService.isUserLoggedIn()" routerLink="/register">Inscription</button>
+        <button mat-menu-item *ngIf="!authService.isUserLoggedIn()" routerLink="/login">Connexion</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuProfile" *ngIf="authService.isUserLoggedIn()">{{ authService.getUsername() | titlecase }}</button>
+        <div class="dropdown-max-width"></div>
+     </mat-menu>
+     <mat-menu #menuProfile="matMenu">
+        <button mat-menu-item (click)="goToUserDetails()">
+           <mat-icon>account_box</mat-icon>
+           Profile
+        </button>
+        <button mat-menu-item routerLink="/user-settings">
+           <mat-icon>settings</mat-icon>
+           Paramètres
+        </button>
+        <button mat-menu-item routerLink="/logout">
+           <mat-icon>exit_to_app</mat-icon>
+           Déconnexion
+        </button>
+        <div class="dropdown-max-width"></div>
+     </mat-menu>
+  </div>
+</mat-toolbar>
+<div class="{{ spacetopheight }}"></div>

@@ -1,0 +1,51 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+   <mat-card fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+      <mat-toolbar color="primary">Nouvel article</mat-toolbar>
+      <form fxLayoutAlign="stretch" fxLayout="column" class="post-form" [formGroup]="postForm" (ngSubmit)="onSubmit(postForm)">
+
+      <mat-form-field>
+         <input matInput placeholder="Titre" formControlName="title" name="title">
+      </mat-form-field>
+      <div *ngIf="postForm.controls.title.invalid && postForm.controls.title.touched" class="invalid">
+         <p *ngIf="postForm.controls.title.errors.required">Le titre est obligatoire</p>
+         <p *ngIf="postForm.controls.title.errors.minlength">Le titre doit contenir minimum 10 caractères</p>
+        <p *ngIf="postForm.controls.title.errors.maxlength">Le titre doit contenir maximum 120 caractères</p>
+      </div>
+
+      <mat-form-field>
+       <mat-label>Contenu</mat-label>
+       <textarea matInput
+                 cdkTextareaAutosize
+                 #autosize="cdkTextareaAutosize"
+                 cdkAutosizeMinRows="5"
+                 cdkAutosizeMaxRows="10" formControlName="content" name="content"></textarea>
+     </mat-form-field>
+     <div *ngIf="postForm.controls.content.invalid && postForm.controls.content.touched" class="invalid">
+       <p *ngIf="postForm.controls.content.errors.required">Le contenu est obligatoire</p>
+       <p *ngIf="postForm.controls.content.errors.minlength">Le titre doit contenir minimum 200 caractères</p>
+       <p *ngIf="postForm.controls.content.errors.maxlength">Le titre doit contenir maximum 3000 caractères</p>
+    </div>
+
+      <mat-form-field>
+         <input matInput placeholder="Image" formControlName="image" name="image">
+      </mat-form-field>
+      <div *ngIf="postForm.controls.image.invalid && postForm.controls.image.touched" class="invalid">
+         <p *ngIf="postForm.controls.image.errors.required">L'image est obligatoire</p>
+      </div>
+
+      <mat-form-field>
+       <mat-label>Catégorie</mat-label>
+       <mat-select formControlName="category_id" name="category_id">
+         <mat-option *ngFor="let cat of categories" [value]="cat.id" >
+           {{cat.name}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+     <div *ngIf="postForm.controls.category_id.invalid && postForm.controls.image.touched" class="invalid">
+        <p *ngIf="postForm.controls.category_id.errors.required">La catégorie est obligatoire</p>
+     </div>
+
+      <button mat-raised-button type="submit" class="mt5" [disabled]="!postForm.valid">Envoyer</button>
+      </form>
+   </mat-card>
+</div>

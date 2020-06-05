@@ -1,0 +1,47 @@
+<div class="main-div flex-container" fxLayout="row wrap" *ngIf="role != null">
+    <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+       <mat-card >
+             <mat-toolbar color="primary">Roles</mat-toolbar>
+             <div class="container">
+             <h3>Permissions actuelle : </h3>
+ 
+             <mat-list>
+                <mat-list-item *ngFor="let currentPermission of currentPermissions"> 
+                   {{currentPermission.name}} &nbsp; 
+                   <span class="btn-actions">
+                   <button mat-mini-fab color="primary" <!--(click)="removePermissionToRole(currentPermission)"-->>
+                      <mat-icon>remove</mat-icon>
+                   </button>
+                   </span>
+                </mat-list-item>
+             </mat-list>
+ 
+             <h3>Ajouter une permission : </h3>
+ 
+             <table>
+                <tr>
+                   <th>Permission</th>
+                   <th>Ajouter</th>
+                </tr>
+                <tr *ngFor="let permission of permissions">
+                   <td >
+                      <span class="ml10">{{ permission.name }} :</span>
+                   </td>
+                   <td align="center">
+                      <span class="btn-actions">
+                        <button mat-mini-fab color="primary" (click)="addPermissionToRole(permission)" *ngIf="!compareName(permission, currentPermissions)">
+                            <mat-icon>add</mat-icon>
+                         </button>
+ 
+                         <button mat-mini-fab color="primary" *ngIf="compareName(permission, currentPermissions)" disabled>
+                            <mat-icon>add</mat-icon>
+                         </button>
+                      </span>
+                   </td>
+                </tr>
+             </table>
+ 
+          </div>
+       </mat-card>
+    </div>
+  </div>

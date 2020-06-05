@@ -1,0 +1,65 @@
+<div class="main-div flex-container" fxLayout="row wrap" *ngIf="user != null">
+    <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+       <mat-toolbar color="primary">Informations</mat-toolbar>
+       <div class="container">
+       <form fxLayoutAlign="stretch" fxLayout="column" class="form" [formGroup]="userUpdateInfoForm" (ngSubmit)="onSubmitUpdateUserInfo()">
+        
+       <mat-form-field>
+          <input matInput placeholder="Pseudo" [(ngModel)]="user.username" formControlName="username">
+       </mat-form-field>
+
+ 
+       <mat-form-field>
+          <input matInput placeholder="Nom" [(ngModel)]="user.lastname" formControlName="lastname" name="lastname">
+       </mat-form-field>
+
+       <mat-form-field>
+          <input matInput placeholder="Prénom" [(ngModel)]="user.firstname" formControlName="firstname" name="firstname">
+       </mat-form-field>
+   
+ 
+       <mat-form-field>
+          <input matInput placeholder="Email" [(ngModel)]="user.email" formControlName="email" name="email" >
+       </mat-form-field>
+ 
+       <button mat-raised-button type="submit" class="mt5" disabled>Modifier les infos</button>
+       </form>
+    </div>
+    </mat-card>
+</div>
+<div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+        <mat-toolbar color="primary">Mot de passe</mat-toolbar>
+        <div class="container">
+       <form fxLayoutAlign="stretch" fxLayout="column" class="form" [formGroup]="userUpdatePasswordForm" (ngSubmit)="onSubmitUpdateUserPassword()">
+        
+        <mat-form-field>
+            <input matInput placeholder="Mot de passe actuelle" type="password" [(ngModel)]="inputPassword" formControlName="password" name="password">
+         </mat-form-field>
+   
+         <mat-form-field>
+            <input matInput placeholder="Nouveau mot de passe" type="password" [(ngModel)]="inputNewPassword" formControlName="newpassword" name="newpassword">
+         </mat-form-field>
+  
+        <button mat-raised-button type="submit" class="mt5" disabled>Modifier le mot de passe</button>
+        </form>
+    </div>
+    </mat-card>
+    </div>
+    <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card>
+        <mat-toolbar color="primary">Photo de profil</mat-toolbar>
+        <div class="container">
+        <form fxLayoutAlign="stretch" fxLayout="column" class="form" [formGroup]="userUpdateImageForm" (ngSubmit)="onSubmitUpdateUserImage()">
+
+         <mat-form-field>
+             <input matInput placeholder="Image" [(ngModel)]="inputImage" formControlName="image" name="image">
+          </mat-form-field>
+     
+         <button mat-raised-button type="submit" class="mt5" disabled>Modifier l'image</button>
+         </form>
+        </div>
+    </mat-card>
+    </div>
+ </div>

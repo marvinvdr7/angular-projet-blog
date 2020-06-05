@@ -1,0 +1,44 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" *ngIf="post != null">
+    <mat-card fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+       <mat-toolbar color="primary">Modifier article</mat-toolbar>
+          <form fxLayoutAlign="stretch" fxLayout="column" class="post-form" [formGroup]="postUpdateForm" (ngSubmit)="onSubmitUpdatePost()">
+         
+             <mat-form-field>
+                <input matInput placeholder="Title" [(ngModel)]="post.title" formControlName="title" name="title">
+             </mat-form-field>
+             <div *ngIf="postUpdateForm.controls.title.invalid" class="invalid">
+                <p *ngIf="postUpdateForm.controls.title.errors.required">Le titre est obligatoire</p>
+             </div>
+
+             <mat-form-field>
+                <mat-label>Contenu</mat-label>
+                <textarea matInput
+                          cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="5"
+                          cdkAutosizeMaxRows="10" [(ngModel)]="post.content" formControlName="content" name="content"></textarea>
+              </mat-form-field>
+              <div *ngIf="postUpdateForm.controls.content.invalid" class="invalid">
+                <p *ngIf="postUpdateForm.controls.content.errors.required">Le contenu est obligatoire</p>
+             </div>
+ 
+             <mat-form-field>
+                <input matInput placeholder="Image" [(ngModel)]="post.image" formControlName="image" name="image">
+             </mat-form-field>
+             <div *ngIf="postUpdateForm.controls.image.invalid" class="invalid">
+                <p *ngIf="postUpdateForm.controls.image.errors.required">L'image est obligatoire</p>
+             </div>
+
+             <mat-form-field>
+                <mat-label>Catégorie</mat-label>
+                <mat-select [(ngModel)]="post.category_id" formControlName="category" name="category">
+                  <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                    {{cat.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+    
+             <button mat-raised-button type="submit" class="mt5" [disabled]="!postUpdateForm.valid">Modifier l'article</button>
+          </form>
+       </mat-card>
+    </div>

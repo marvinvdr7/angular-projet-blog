@@ -1,0 +1,76 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+   <mat-card fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+      <mat-toolbar color="primary">Inscription</mat-toolbar>
+      <form fxLayoutAlign="stretch" fxLayout="column" class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field>
+         <input matInput placeholder="Pseudo" formControlName="username" name="username">
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.username.invalid && registerForm.controls.username.touched" class="invalid">
+         <p *ngIf="registerForm.controls.username.errors.required">Le pseudo est obligatoire</p>
+         <p *ngIf="registerForm.controls.username.errors.minlength">Le pseudo doit contenir minimum 4 caractères</p>
+         <p *ngIf="registerForm.controls.username.errors.maxlength">Le pseudo doit contenir maximum 30 caractères</p>
+         <p *ngIf="registerForm.controls.username.errors.pattern">Le pseudo ne peut contenir que des lettres</p>
+      </div>
+      <p *ngIf="errorUsernameExist == true" class="invalid">Ce n'est plus disponible</p>
+
+      <mat-form-field>
+         <input matInput placeholder="Nom" formControlName="lastname" name="lastname">
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.lastname.invalid && registerForm.controls.lastname.touched" class="invalid">
+         <p *ngIf="registerForm.controls.lastname.errors.required">Le nom est obligatoire</p>
+         <p *ngIf="registerForm.controls.lastname.errors.minlength">Le nom doit contenir minimum 4 caractères</p>
+         <p *ngIf="registerForm.controls.lastname.errors.maxlength">Le nom doit contenir maximum 30 caractères</p>
+         <p *ngIf="registerForm.controls.lastname.errors.pattern">Le nom ne peut contenir que des lettres</p>
+      </div>
+
+      <mat-form-field>
+         <input matInput placeholder="Prénom" formControlName="firstname" name="firstname">
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.firstname.invalid && registerForm.controls.firstname.touched" class="invalid">
+         <p *ngIf="registerForm.controls.firstname.errors.required">Le prénom est obligatoire</p>
+         <p *ngIf="registerForm.controls.firstname.errors.minlength">Le prénom doit contenir minimum 4 caractères</p>
+         <p *ngIf="registerForm.controls.firstname.errors.maxlength">Le prénom doit contenir maximum 30 caractères</p>
+         <p *ngIf="registerForm.controls.firstname.errors.pattern">Le prénom ne peut contenir que des lettres</p>
+      </div>
+
+      <mat-form-field>
+         <input matInput placeholder="Email" formControlName="email" name="email">
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" class="invalid">
+         <p *ngIf="registerForm.controls.email.errors.required">L'email est obligatoire</p>
+         <p *ngIf="registerForm.controls.email.errors.email">L'email n'est pas valide</p>
+      </div>
+      <p *ngIf="errorEmailExist == true" class="invalid">Cette adresse email est déjà prise</p>
+
+      <mat-form-field>
+         <mat-label>Date de naissance</mat-label>
+         <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="birthdate">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.birthdate.invalid && registerForm.controls.birthdate.touched" class="invalid">
+         <p *ngIf="registerForm.controls.birthdate.errors.required">La date de naissance est obligatoire</p>
+      </div>
+
+      <mat-form-field>
+         <input matInput placeholder="Mot de passe" type="password" formControlName="password" name="password">
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="invalid">
+         <p *ngIf="registerForm.controls.password.errors.required">Le mot de passe est obligatoire</p>
+         <p *ngIf="registerForm.controls.password.errors.minlength">Le mot de passe doit contenir minimum 8 caractères</p>
+         <p *ngIf="registerForm.controls.password.errors.maxlength">Le mot de passe doit contenir maximum 255 caractères</p>
+      </div>
+
+      <mat-form-field>
+         <input matInput placeholder="Confirmation mot de passe" type="password" formControlName="confirmpassword" name="confirmpassword">
+      </mat-form-field>
+      <div *ngIf="registerForm.controls.confirmpassword.invalid && registerForm.controls.confirmpassword.touched" class="invalid">
+         <p *ngIf="registerForm.controls.confirmpassword.errors.required">La confirmation est obligatoire</p>
+         <p *ngIf="registerForm.controls.confirmpassword.errors.passwordsMatch">Les mots de passes ne sont pas identiques</p>
+      </div>
+
+      <button mat-raised-button type="submit" class="mt5" [disabled]="!registerForm.valid">S'inscrire</button>
+      </form>
+   </mat-card>
+</div>

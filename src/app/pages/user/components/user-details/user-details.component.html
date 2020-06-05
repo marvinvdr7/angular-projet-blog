@@ -1,0 +1,24 @@
+<div class="main-div flex-container" fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card *ngIf="user != null">
+       <h3>Informations de {{ user.username }}</h3>
+        <div>
+            Photo de profil : {{ user.image }}
+        </div>
+        <div>
+            Prénom : {{ user.firstname }}
+        </div>
+        <div>
+            Nom : {{ user.lastname }}
+        </div>
+        <div>
+            Email : {{ user.email }}
+        </div>
+        <div>
+            Date de naissance : {{ user.birthdate }}
+        </div>
+      
+       
+    </mat-card>
+</div>
+ </div>

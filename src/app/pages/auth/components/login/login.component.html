@@ -1,0 +1,15 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+     <mat-toolbar color="primary">Connexion</mat-toolbar>
+     <div class="errorLog" *ngIf="errorLog == true">Pseudo ou mot de passe incorrect</div>
+     <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+        <mat-form-field >
+           <input matInput placeholder="Pseudo" name="username" [(ngModel)]="username">
+        </mat-form-field>
+        <mat-form-field>
+           <input matInput placeholder="Mot de passe" type="password" name="password" [(ngModel)]="password">
+        </mat-form-field>
+        <button mat-raised-button type="submit" class="mt5" (click)="checkLogin()">Se connecter</button>
+     </form>
+  </mat-card>
+</div>
